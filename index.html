@@ -16,6 +16,8 @@
     --text1: pink;      /* warna utama */
     --text2: pink;    /* warna kotak */
     --text3: white;   /* warna background */
+    --text4: white; 
+    --text5: rgb(0, 0, 0); 
     --ltr1: #E6FFA2;         /* warna teks */
     --ltr2: blue;
     --ltr3: 
@@ -53,6 +55,17 @@ section{
 
 h1,h2,h3{
     font-family:var(--font3);
+    color: #E6FFA2;
+}
+
+h4{
+    font-family:var(--font3);   /* text warna */
+    color: #000000;
+}
+
+h1,h2,h3{
+    font-family:var(--font3);
+    color: #E6FFA2;
 }
 
 img{
@@ -228,6 +241,7 @@ button{
 /* ===========================
    MAIN
 =========================== */
+
 #loader,
 #cover{
     display:none;
@@ -240,7 +254,33 @@ button{
 /* ===========================
    HERO
 =========================== */
+.gallery-item img{
+    width:100%;
+    height:auto;
+    border-radius:15px;
+}
+.gallery-scroll{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    cursor:grab;
+}
 
+.gallery-scroll:active{
+    cursor:grabbing;
+}
+
+.gallery-item{
+    flex:0 0 250px;
+}
+
+.gallery-item img{
+    pointer-events:none;
+    user-select:none;
+    -webkit-user-drag:none;
+}
 .hero{
     max-width:900px;
     margin:auto;
@@ -265,6 +305,7 @@ button{
 #countdown{
     text-align:center;
     background:var(--text1);
+    color: var(--ltr5);
 }
 
 .counter{
@@ -273,7 +314,7 @@ button{
     justify-content:center;
     align-items:center;
     gap:15px;
-    margin-top:50px;
+    margin-top:1px;
     flex-wrap:wrap;
 }
 
@@ -319,6 +360,7 @@ button{
     gap:30px;
     max-width:1000px;
     margin:auto;
+    
 }
 
 .card{
@@ -326,6 +368,7 @@ button{
     border-radius:15px;
     background:var(--text3);
     box-shadow:0 10px 20px rgba(0,0,0,.08);
+    
 }
 
 .card img{
@@ -337,7 +380,7 @@ button{
 
 .card h2{
     font-size:38px;
-    color:var(--ltr2);
+    color:var(--ltr1);
 }
 
 .card p{
@@ -540,42 +583,34 @@ footer p{
         Menuju Hari Bahagia
     </h2>
 
-    <div class="counter">
+        <div>
 
-        <div class="box">
+            <img
+                src="img/tgl.png"
+                alt="Mempelai Pria">
+            </div>
+    <div class="counter">
+        
+        <div>
             <h1 id="day">00</h1>
             <p>Hari</p>
         </div>
-
-        <div class="box">
+<div>-</div>
+        <div>
             <h1 id="hour">00</h1>
             <p>Jam</p>
         </div>
-
-        <div class="box">
+<div>-</div>
+        <div>
             <h1 id="minute">00</h1>
             <p>Menit</p>
         </div>
-
-        <div class="box">
+<div>-</div>
+        <div>
             <h1 id="second">00</h1>
             <p>Detik</p>
         </div>
 
-        <div class="card">
-
-            <img
-                src="image/rizqon.jpg"
-                alt="Mempelai Pria">
-
-            <h2>Muhammad Rizqon Fadhillah</h2>
-
-            <p>Putra Pertama dari</p>
-            <p>Bapak Dahlan &amp; Ibu Noor Aini</p>
-
-        </div>
-
-    </div>
 
 </section>
 
@@ -586,17 +621,21 @@ footer p{
     </h2>
 
     <div class="grid">
-        <div class="card">
+        <div>
 
             <img
-                src="image/rizqon.jpg"
+                src="img/bocil.png"
                 alt="Mempelai Pria">
 
             <h2>Muhammad Rizqon Fadhillah</h2>
 
             <p>Putra Pertama dari</p>
             <p>Bapak Dahlan &amp; Ibu Noor Aini</p>
+            
+            <h2>Wahyu Waliyadzani</h2>
 
+            <p>Putri Pertama dari</p>
+            <p>Bapak Wahyd Abdullah &amp; Ibu Yuriani Waruwu</p>
         </div>
 
         <div class="card">
@@ -626,7 +665,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤ Pertama Bertemu</h3>
+            <h4>❤ Pertama Bertemu</h4>
 
             <p>
                 Tak ada yang kebetulan di dunia ini.
@@ -638,7 +677,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤  Menjalin Komitmen</h3>
+            <h4>❤  Menjalin Komitmen</h4>
 
             <p>
                 Hari demi hari kami saling mengenal,
@@ -651,7 +690,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤  Menikah</h3>
+            <h4>❤  Menikah</h4>
 
             <p>
                 Dengan memohon ridha Allah SWT,
@@ -730,30 +769,46 @@ footer p{
 
 </section>
 
-<section id="gallery" style="background:var(--text1);">
+<section id="gallery">
 
-    <h2 class="section-title">
-        Galeri
-    </h2>
+    <h2 class="section-title">Galeri</h2>
 
-    <div style="
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-        gap:15px;
-        max-width:1100px;
-        margin:40px auto;
-    ">
+    <div class="gallery-scroll">
 
-        <img src="img/chat.png" alt="Galeri 1">
-        <img src="img/bonceng.png" alt="Galeri 2">
-        <img src="img/maam2.png" alt="Galeri 3">
-        <img src="img/ayunan.png" alt="Galeri 4">
-        <img src="img/icecream.png" alt="Galeri 5">
-        <img src="img/otey.png" alt="Galeri 6">
+        <div class="gallery-item">
+            <img src="img/chat.png" alt="">
+            <p>Pertama Bertemu</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/bonceng.png" alt="">
+            <p>Jalan Bersama</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/maam2.png" alt="">
+            <p>Makan Bersama</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/ayunan.png" alt="">
+            <p>Bermain</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/icecream.png" alt="">
+            <p>Es Krim</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/otey.png" alt="">
+            <p>Kenangan</p>
+        </div>
 
     </div>
 
 </section>
+
 <section id="rsvp">
 
     <h2 class="section-title">
@@ -847,12 +902,10 @@ window.onload = () => {
    BACKGROUND MUSIC
 =========================== */
 
-const music = new Audio(
-    "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d6d5d2c8.mp3"
-);
+const music = new Audio("msc/coba.mp3");
 
 music.loop = true;
-
+music.volume = 1;
 /* ===========================
    OPEN INVITATION
 =========================== */
