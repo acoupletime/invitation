@@ -262,6 +262,8 @@ button{
     -webkit-overflow-scrolling:touch;
     cursor:grab;
     padding:20px 10px;
+    scrollbar-width:none;      /* Firefox */
+    -ms-overflow-style:none;  
 }
 
 .gallery-scroll:active{
@@ -270,11 +272,13 @@ button{
 
 .gallery-scroll::-webkit-scrollbar{
     height:8px;
+    display:none;  
 }
 
 .gallery-scroll::-webkit-scrollbar-thumb{
     background:#ccc;
     border-radius:10px;
+    
 }
 
 .gallery-item{
