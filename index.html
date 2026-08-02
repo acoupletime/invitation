@@ -261,14 +261,14 @@ button{
 /* ===========================
    MAIN
 =========================== */
-/*
+
 #loader,
 #cover{
     display:none;
-}*/
+}
 
 #main{
-    display:none;
+    display:block;
 }
 /* ===========================
    GALLERY
@@ -977,6 +977,19 @@ openButton.onclick = () => {
 /* ===========================
    GUEST NAME
 =========================== */
+
+/* ===========================
+   GUEST NAME
+=========================== */
+
+const guest = document.getElementById("guest");
+
+const params = new URLSearchParams(window.location.search);
+const namaTamu = params.get("to");
+
+if (namaTamu) {
+    guest.textContent = decodeURIComponent(namaTamu.replace(/\+/g, " "));
+}
 
 const form = document.getElementById("rsvpForm");
 
