@@ -63,9 +63,9 @@ h4{
     color: #000000;
 }
 
-h1,h2,h3{
+h5{
     font-family:var(--font3);
-    color: #E6FFA2;
+    color: #ffffff;
 }
 
 img{
@@ -238,6 +238,25 @@ button{
     transform:translateY(-4px);
 }
 
+/*toast*/
+
+#toast{
+    position:fixed;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#333;
+    color:#fff;
+    padding:12px 20px;
+    border-radius:10px;
+    opacity:0;
+    transition:.3s;
+    z-index:9999;
+}
+
+#toast.show{
+    opacity:1;
+}
 /* ===========================
    MAIN
 =========================== */
@@ -800,7 +819,7 @@ footer p{
 
 <section id="gallery">
 
-    <h2 class="section-title">Singkat Cerita</h2>
+    <h2 class="section-title">Our Story</h2>
 
     <div class="gallery-scroll">
 
@@ -846,19 +865,19 @@ footer p{
 
     <form id="rsvpForm">
 
-        <input
+        <input id="nama"
             type="text"
             placeholder="Nama"
             required>
 
-        <select>
+        <select id="hadir">
 
             <option>Hadir</option>
             <option>Tidak Hadir</option>
 
         </select>
 
-        <textarea
+        <textarea id="ucapan"
             placeholder="Ucapan dan Doa"></textarea>
 
         <button
@@ -879,11 +898,11 @@ footer p{
 
     <div class="gift-box">
 
-        <h3>BCA</h3>
+        <h5>BCA</h5>
 
-        <h2 id="rekening">
+        <h5 id="rekening">
             1234567890
-        </h2>
+        </h5>
 
         <button id="copyRek">
             Salin Rekening
@@ -906,7 +925,7 @@ footer p{
 </footer>
 
 </div>
-
+<div id="toast">Terkirim.</div>
 <script>
 
 /* ===========================
@@ -965,14 +984,44 @@ openButton.onclick = () => {
    GUEST NAME
 =========================== */
 
-const guest = document.getElementById("guest");
+const form = document.getElementById("rsvpForm");
 
-const guestName =
-    new URLSearchParams(window.location.search).get("to");
+form.addEventListener("submit", function(e){
 
-if (guestName) {
-    guest.innerHTML = decodeURIComponent(guestName);
-}
+    e.preventDefault();
+
+    const nama = document.getElementById("nama").value;
+    const hadir = document.getElementById("hadir").value;
+    const ucapan = document.getElementById("ucapan").value;
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd3Lfth_nzwMfgSULjhMjVUX4fm265Scg9-j9QEF8mOQUlk1Q/formResponse",{
+
+        method:"POST",
+
+        mode:"no-cors",
+
+        body:new URLSearchParams({
+
+            "entry.643412851": nama,
+            "entry.1645384770": hadir,
+            "entry.1896488482": ucapan
+
+        })
+
+    });
+/* TOAST */
+
+const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 1500);
+
+    form.reset();
+
+});
 
 /* ===========================
    COUNTDOWN
@@ -1038,7 +1087,7 @@ copyButton.addEventListener("click", async () => {
 });
 /* ===========================
    RSVP FORM
-=========================== */
+=========================== 
 
 const rsvpForm = document.getElementById("rsvpForm");
 
@@ -1050,7 +1099,7 @@ rsvpForm.onsubmit = (event) => {
 
     rsvpForm.reset();
 
-};
+};*/
 
 </script>
 
