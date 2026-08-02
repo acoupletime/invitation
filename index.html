@@ -9,20 +9,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Delius&family=Fredericka+the+Great&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Delius&family=Fredericka+the+Great&family=Caveat+Brush&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
 :root{
-    --color1: pink;      /* warna utama */
-    --color2: #faf8f4;    /* warna kotak */
-    --color3: #ffe4ec;   /* warna background */
-    --color4: #333333;         /* warna teks */
-    --color5:
+    --text1: pink;      /* warna utama */
+    --text2: pink;    /* warna kotak */
+    --text3: white;   /* warna background */
+    --ltr1: #E6FFA2;         /* warna teks */
+    --ltr2: blue;
+    --ltr3: 
     --shadow: rgba(0,0,0,.08);
     --font1: "Cormorant Garamond", serif;
     --font2: "Poppins", sans-serif;
     --font3: "Delius", cursive;
-    --font4: "Fredericka the Great", serif;
+    --font4: "Caveat Brush", cursive;
 }
 
 /* ===========================
@@ -40,8 +41,8 @@ html{
 }
 
 body{
-    font-family:"Poppins",sans-serif;
-    background:var(--color1);
+    font-family:var(--font4);
+    background:var(--text1);
     color:black;
     overflow-x:hidden;
 }
@@ -51,7 +52,7 @@ section{
 }
 
 h1,h2,h3{
-    font-family:var(--font4);
+    font-family:var(--font3);
 }
 
 img{
@@ -74,20 +75,20 @@ button{
 .section-title{
     text-align:center;
     font-size:48px;
-    color:white;
+    color:var(--text3);
     margin-bottom:40px;
 }
 
 .card-box{
-    background:#fff;
-    border-radius:10px;
+    background:var(--text3);
+    border-radius:15px;
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
 .story-card{
-    background:#fff;
+    background:var(--text3);
     padding:30px;
-    border-radius:10px;
+    border-radius:15px;
     margin-bottom:25px;
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
@@ -109,8 +110,11 @@ button{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#fff;
+    background:var(--text3);
     z-index:99999;
+
+    opacity:1;
+    transition:opacity .5s ease;
 }
 
 .loaderBox{
@@ -119,19 +123,33 @@ button{
 
 .loaderBox h1{
     font-size:42px;
-    color:#b8924f;
+    color:var(--ltr2);
 }
 
 .spinner{
-    width:60px;
-    height:60px;
+    position:relative;
+    width:70px;
+    height:70px;
     margin:30px auto;
-    border:6px solid #ddd;
-    border-top:6px solid #b8924f;
     border-radius:50%;
     animation:spin 1s linear infinite;
 }
 
+.spinner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:conic-gradient(
+        transparent 0deg,
+        var(--ltr1) 45deg,
+        var(--ltr1) 315deg,
+        transparent 360deg
+    );
+    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+    mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+    filter:blur(0.8px);
+}
 @keyframes spin{
     to{
         transform:rotate(360deg);
@@ -162,7 +180,7 @@ button{
     position:relative;
     z-index:2;
     padding:20px;
-    color:#fff;
+    color:var(--text3);
     text-align:center;
 }
 
@@ -196,9 +214,9 @@ button{
     margin-top:40px;
     padding:15px 45px;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
     background:#c4a063;
-    color:#fff;
+    color:var(--text3);
     font-size:18px;
     transition:.3s;
 }
@@ -210,9 +228,13 @@ button{
 /* ===========================
    MAIN
 =========================== */
+#loader,
+#cover{
+    display:none;
+}
 
 #main{
-    display:none;
+    display:block;
 }
 
 /* ===========================
@@ -228,7 +250,7 @@ button{
 .hero h2{
     margin-bottom:20px;
     font-size:50px;
-    color:#b8924f;
+    color:var(--ltr1); /*Assalamu*/
 }
 
 .hero p{
@@ -242,7 +264,7 @@ button{
 
 #countdown{
     text-align:center;
-    background:var(--color1);
+    background:var(--text1);
 }
 
 .counter{
@@ -258,7 +280,7 @@ button{
 .box{
     width:80px;
     height:80px;
-    border-radius:10px;
+    border-radius:15px;
     background:#faf8f4;
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 
@@ -273,7 +295,7 @@ button{
     font-family:var(--font3);
     margin:0;
     font-size:32px;
-    color:#b8924f;
+    color:var(--ltr2);
     line-height:1;
 }
 
@@ -301,21 +323,21 @@ button{
 
 .card{
     padding:20px;
-    border-radius:10px;
-    background:#fff;
+    border-radius:15px;
+    background:var(--text3);
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
 .card img{
     height:450px;
     object-fit:cover;
-    border-radius:10px;
+    border-radius:15px;
     margin-bottom:20px;
 }
 
 .card h2{
     font-size:38px;
-    color:#b8924f;
+    color:var(--ltr2);
 }
 
 .card p{
@@ -364,7 +386,7 @@ textarea{
     padding:15px;
     margin-bottom:15px;
     border:1px solid #ddd;
-    border-radius:10px;
+    border-radius:15px;
     font-family:inherit;
     font-size:15px;
 }
@@ -379,9 +401,9 @@ button.primary{
     margin-top:20px;
     padding:15px;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
     background:#E6FFA2;
-    color:#white;
+    color:white;
     font-size:16px;
 }
 
@@ -395,16 +417,16 @@ button.primary{
     padding:40px;
     text-align:center;
     background:#faf8f4;
-    border-radius:10px;
+    border-radius:15px;
 }
 
 .gift-box button{
     margin-top:20px;
     padding:15px 35px;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
     background:#E6FFA2;
-    color:#black;
+    color:black;
 }
 
 /* ===========================
@@ -413,7 +435,7 @@ button.primary{
 
 footer{
     background:#222;
-    color:#fff;
+    color:var(--text3);
     text-align:center;
     padding:60px 20px;
 }
@@ -540,6 +562,19 @@ footer p{
             <p>Detik</p>
         </div>
 
+        <div class="card">
+
+            <img
+                src="image/rizqon.jpg"
+                alt="Mempelai Pria">
+
+            <h2>Muhammad Rizqon Fadhillah</h2>
+
+            <p>Putra Pertama dari</p>
+            <p>Bapak Dahlan &amp; Ibu Noor Aini</p>
+
+        </div>
+
     </div>
 
 </section>
@@ -632,7 +667,7 @@ footer p{
 
 </section>
 
-<section id="event" style="background:var(--color1);">
+<section id="event" style="background:var(--text1);">
 
     <h2 class="section-title">
         Detail Acara
@@ -686,7 +721,7 @@ footer p{
             src="https://www.google.com/maps?q=Jakarta&output=embed"
             width="100%"
             height="450"
-            style="border:none;border-radius:10px;"
+            style="border:none;border-radius:15px;"
             loading="lazy"
             allowfullscreen>
         </iframe>
@@ -695,7 +730,7 @@ footer p{
 
 </section>
 
-<section id="gallery" style="background:var(--color1);">
+<section id="gallery" style="background:var(--text1);">
 
     <h2 class="section-title">
         Galeri
@@ -709,12 +744,12 @@ footer p{
         margin:40px auto;
     ">
 
-        <img src="https://picsum.photos/600/700?1" alt="Galeri 1">
-        <img src="https://picsum.photos/600/700?2" alt="Galeri 2">
-        <img src="https://picsum.photos/600/700?3" alt="Galeri 3">
-        <img src="https://picsum.photos/600/700?4" alt="Galeri 4">
-        <img src="https://picsum.photos/600/700?5" alt="Galeri 5">
-        <img src="https://picsum.photos/600/700?6" alt="Galeri 6">
+        <img src="img/chat.png" alt="Galeri 1">
+        <img src="img/bonceng.png" alt="Galeri 2">
+        <img src="img/maam2.png" alt="Galeri 3">
+        <img src="img/ayunan.png" alt="Galeri 4">
+        <img src="img/icecream.png" alt="Galeri 5">
+        <img src="img/otey.png" alt="Galeri 6">
 
     </div>
 
@@ -752,7 +787,7 @@ footer p{
 
 </section>
 
-<section id="gift" style="background:var(--color1);">
+<section id="gift" style="background:var(--text1);">
 
     <h2 class="section-title">
         Amplop Digital
@@ -800,7 +835,11 @@ const main = document.getElementById("main");
 
 window.onload = () => {
     setTimeout(() => {
-        loader.style.display = "none";
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 500); // harus sama dengan transition CSS
     }, 800);
 };
 
