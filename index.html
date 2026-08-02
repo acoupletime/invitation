@@ -14,7 +14,7 @@
 
 :root{
     --text1: pink;      /* warna utama */
-    --text2: pink;    /* warna kotak */
+    --text2: black;    /* warna kotak */
     --text3: white;   /* warna background */
     --text4: white; 
     --text5: rgb(0, 0, 0); 
@@ -93,13 +93,14 @@ button{
 }
 
 .card-box{
-    background:var(--text3);
+    background:var(--text1);
     border-radius:15px;
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
 .story-card{
-    background:var(--text3);
+    background:#222;
+    color: var(--text1);
     padding:30px;
     border-radius:15px;
     margin-bottom:25px;
@@ -507,7 +508,7 @@ button.primary{
     margin:40px auto;
     padding:40px;
     text-align:center;
-    background:#faf8f4;
+    background:#222;
     border-radius:15px;
 }
 
@@ -518,6 +519,8 @@ button.primary{
     border-radius:15px;
     background:#E6FFA2;
     color:black;
+    font-family: var(--font3);
+    font-size:16px;
 }
 
 /* ===========================
@@ -680,23 +683,12 @@ footer p{
             <p>Putra Pertama dari</p>
             <p>Bapak Dahlan &amp; Ibu Noor Aini</p>
             
+            <h5 style="font-size:30px;">&</h5>
+
             <h2>Wahyu Waliyadzani</h2>
 
             <p>Putri Pertama dari</p>
             <p>Bapak Wahyd Abdullah &amp; Ibu Yuriani Waruwu</p>
-        </div>
-
-        <div class="card">
-
-            <img
-                src="image/ayu.jpg"
-                alt="Mempelai Wanita">
-
-            <h2>Wahyu Waliyadzani</h2>
-
-            <p>Putri Pertama dari</p>
-            <p>Bapak Lorem &amp; Ibu Ipsum</p>
-
         </div>
 
     </div>
@@ -713,7 +705,7 @@ footer p{
 
         <div class="story-card">
 
-            <h4>❤ Pertama Bertemu</h4>
+            <h3>❤ Pertama Bertemu</h3>
 
             <p>
                 Tak ada yang kebetulan di dunia ini.
@@ -725,7 +717,7 @@ footer p{
 
         <div class="story-card">
 
-            <h4>❤  Menjalin Komitmen</h4>
+            <h3>❤  Menjalin Komitmen</h3>
 
             <p>
                 Hari demi hari kami saling mengenal,
@@ -738,7 +730,7 @@ footer p{
 
         <div class="story-card">
 
-            <h4>❤  Menikah</h4>
+            <h3>❤  Menikah</h3>
 
             <p>
                 Dengan memohon ridha Allah SWT,
@@ -868,7 +860,9 @@ footer p{
         <input id="nama"
             type="text"
             placeholder="Nama"
-            required>
+            required
+            oninvalid="this.setCustomValidity('Silakan isi nama Anda.')"
+    oninput="this.setCustomValidity('')">
 
         <select id="hadir">
 
@@ -925,7 +919,7 @@ footer p{
 </footer>
 
 </div>
-<div id="toast">Terkirim.</div>
+<div id="toast">♡</div>
 <script>
 
 /* ===========================
@@ -1069,21 +1063,16 @@ const rekening = document.getElementById("rekening");
 const copyButton = document.getElementById("copyRek");
 
 copyButton.addEventListener("click", async () => {
-    const text = rekening.textContent.trim();
+    const toast = document.getElementById("toast");
 
-    try {
-        await navigator.clipboard.writeText(text);
-        alert("Nomor rekening berhasil disalin.");
-    } catch (err) {
-        const temp = document.createElement("textarea");
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
+toast.classList.add("show");
 
-        alert("Nomor rekening berhasil disalin.");
-    }
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 1500);
+
+    form.reset();
+
 });
 /* ===========================
    RSVP FORM
