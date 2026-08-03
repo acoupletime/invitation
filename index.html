@@ -14,7 +14,7 @@
 
 :root{
     --text1: pink;      /* warna utama */
-    --text2: black;    /* warna kotak */
+    --text2: #222;    /* warna kotak */
     --text3: white;   /* warna background */
     --text4: white; 
     --text5: rgb(0, 0, 0); 
@@ -60,7 +60,7 @@ h1,h2,h3{
 
 h4{
     font-family:var(--font3);   /* text warna */
-    color: #000000;
+    color: #222;
 }
 
 h5{
@@ -84,6 +84,25 @@ button{
 /* ===========================
    UTILITIES
 =========================== */
+.foto{
+    display:flex;
+    width:100%;
+}
+
+.foto > div{
+    width:40%;
+    margin:auto;
+    text-align:center;
+}
+
+.foto img{
+    width:100%;
+    object-fit:cover;
+}
+
+.foto p{
+    margin-top:12px;
+}
 
 .section-title{
     text-align:center;
@@ -124,7 +143,7 @@ button{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:var(--text3);
+    background:var(--text1);
     z-index:99999;
 
     opacity:1;
@@ -137,7 +156,7 @@ button{
 
 .loaderBox h1{
     font-size:42px;
-    color:var(--ltr2);
+    color:var(--ltr3);
 }
 
 .spinner{
@@ -180,7 +199,7 @@ button{
     justify-content:center;
     align-items:center;
     height:100vh;
-    background:url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600") center/cover;
+    background: url("img/otey.png") center/cover;
 }
 
 #cover::before{
@@ -220,8 +239,9 @@ button{
 
 #guest{
     margin-top:10px;
-    font-size:34px;
-    color:#ffe8a8;
+    font-size:35px;
+    color:#d0ffff;
+    -webkit-text-stroke: 0.1px #a6c5ff;
 }
 
 #open{
@@ -229,8 +249,9 @@ button{
     padding:15px 45px;
     border:none;
     border-radius:15px;
-    background:#c4a063;
-    color:var(--text3);
+    background:var(--ltr1);
+    color:var(--text5);
+    font-family: var(--font4);
     font-size:18px;
     transition:.3s;
 }
@@ -268,7 +289,7 @@ button{
 }
 */
 #main{
-    display:none;
+    display:block;
 }
 /* ===========================
    GALLERY
@@ -595,10 +616,10 @@ footer p{
         <p>THE WEDDING OF</p>
 
         <h1>Rizqon</h1>
-        <span>&</span>
-        <h1>Ayu</h1>
+        <span style="color: var(--text3);">&</span>
+        <h1 style="color: var(--text1);">Ayu</h1>
 
-        <h2>Kepada Yth.</h2>
+        <h2 style="color: #fffcd9;">Kepada Yth.</h2>
 
         <div id="guest">
             Tamu Undangan
@@ -631,7 +652,7 @@ footer p{
 <section id="countdown">
 
     <h2 class="section-title">
-        Menuju Hari Bahagia
+        Save The Date
     </h2>
 
         <div>
@@ -668,7 +689,7 @@ footer p{
 <section id="couple">
 
     <h2 class="section-title">
-        Mempelai
+        
     </h2>
 
     <div class="grid">
@@ -677,7 +698,7 @@ footer p{
             <img
                 src="img/bocil.png"
                 alt="Mempelai Pria">
-
+<br>
             <h2>Muhammad Rizqon Fadhillah</h2>
 
             <p>Putra Pertama dari</p>
@@ -693,8 +714,22 @@ footer p{
 
     </div>
 
-</section>
+<br>
+<br>
+<div class="foto">
 
+    <div>
+        <img src="img/rizqon.png" alt="">
+        <p>Rizqon</p>
+    </div>
+
+    <div>
+        <img src="img/ayu.png" alt="">
+        <p>Ayu</p>
+    </div>
+
+</div>
+</section>
 <section id="story">
 
     <h2 class="section-title">
@@ -764,11 +799,11 @@ footer p{
 
             <h2>Akad Nikah</h2>
 
-            <h3>05 September 2026</h3>
+            <p>Sabtu, 05 September 2026</p>
 
-            <p>05.00 WIB</p>
+            <p>16.00 WITA</p>
 
-            <p>Gedung Serbaguna Bahagia</p>
+            <p>BTN Lapesongko 2 <br> Jl. Rejeki Sengkang</p>
 
         </div>
 
@@ -776,11 +811,11 @@ footer p{
 
             <h2>Resepsi</h2>
 
-            <h3>06 September 2026</h3>
+            <p>Minggu, 06 September 2026</p>
 
-            <p>08.00 WIB</p>
+            <p>10.00 - 17.00 WITA</p>
 
-            <p>Gedung Serbaguna Bahagia</p>
+            <p>Gedung Cendrawasih <br> Jl. A. Koro Sengkang</p>
 
         </div>
 
@@ -919,7 +954,7 @@ footer p{
 </footer>
 
 </div>
-<div id="toast">♡</div>
+<div id="toast">Terima Kasih</div>
 <script>
 
 /* ===========================
