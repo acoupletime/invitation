@@ -1147,9 +1147,67 @@ setTimeout(() => {
     form.reset();
 
 });
+
+/* ===========================
+   INFINITE GALLERY
+=========================== */
+
+const gallery = document.querySelector(".gallery-scroll");
+
+// Simpan item asli
+const items = [...gallery.children];
+
+// Clone semua item ke depan & belakang
+items.forEach(item => {
+    gallery.appendChild(item.cloneNode(true));
+});
+items.slice().reverse().forEach(item => {
+    gallery.insertBefore(item.cloneNode(true), gallery.firstChild);
+});
+
+// Hitung lebar 1 set gambar
+const setWidth = gallery.scrollWidth / 3;
+
+// Mulai dari set asli (tengah)
+gallery.scrollLeft = setWidth;
+
+// Auto scroll
+const speed = 0.8;
+
+function animate() {
+
+    gallery.scrollLeft += speed;
+
+    // Jika melewati set asli ke kanan
+    if (gallery.scrollLeft >= setWidth * 2) {
+        gallery.scrollLeft -= setWidth;
+    }
+
+    // Jika melewati set asli ke kiri
+    if (gallery.scrollLeft <= 0) {
+        gallery.scrollLeft += setWidth;
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+// Saat user drag/swipe
+gallery.addEventListener("scroll", () => {
+
+    if (gallery.scrollLeft >= setWidth * 2) {
+        gallery.scrollLeft -= setWidth;
+    }
+
+    if (gallery.scrollLeft <= 0) {
+        gallery.scrollLeft += setWidth;
+    }
+
+});
 /* ===========================
    GALLERY AUTO LOOP
-=========================== */
+=========================== 
 
 const gallery = document.querySelector(".gallery-scroll");
 
@@ -1185,6 +1243,7 @@ gallery.addEventListener("scroll", () => {
     }
 
 });
+*/
 /* ===========================
    RSVP FORM
 =========================== 
