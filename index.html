@@ -306,7 +306,7 @@ button{
     display:flex;
     gap:20px;
     overflow-x:auto;
-    scroll-behavior:smooth;
+    scroll-behavior:auto;
     -webkit-overflow-scrolling:touch;
     cursor:grab;
     padding:20px 10px;
@@ -1145,6 +1145,44 @@ setTimeout(() => {
 }, 1500);
 
     form.reset();
+
+});
+/* ===========================
+   GALLERY AUTO LOOP
+=========================== */
+
+const gallery = document.querySelector(".gallery-scroll");
+
+// Gandakan isi gallery
+gallery.innerHTML += gallery.innerHTML;
+
+const halfWidth = gallery.scrollWidth / 2;
+
+// Mulai dari awal
+gallery.scrollLeft = 0;
+
+// Kecepatan auto scroll (0.5 - 2)
+let speed = 0.8;
+
+// Auto scroll
+setInterval(() => {
+    gallery.scrollLeft += speed;
+
+    if (gallery.scrollLeft >= halfWidth) {
+        gallery.scrollLeft -= halfWidth;
+    }
+}, 16);
+
+// Loop saat digeser manual
+gallery.addEventListener("scroll", () => {
+
+    if (gallery.scrollLeft >= halfWidth) {
+        gallery.scrollLeft -= halfWidth;
+    }
+
+    if (gallery.scrollLeft < 0) {
+        gallery.scrollLeft += halfWidth;
+    }
 
 });
 /* ===========================
