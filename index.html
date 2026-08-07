@@ -57,6 +57,8 @@ body{
 
 section{
     padding:10px 20px;
+    position:relative;
+    z-index: 1 ;
 }
 
 h1,h2,h3{
@@ -77,6 +79,7 @@ h5{
 img{
     display:block;
     width:100%;
+    position: relative;
 }
 
 a{
@@ -130,7 +133,7 @@ button{
     padding:30px;
     border-radius:15px;
     margin-bottom:25px;
-    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    box-shadow:0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .center{
@@ -196,6 +199,29 @@ button{
     }
 }
 
+.flowers{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+.flower{
+    position:absolute;
+    top:-60px;
+}
+.flower img{
+    width:100%;
+    display:block;
+}
+@keyframes fall{
+    0%{transform:translate(0,-60px) rotate(0deg);opacity:0;}
+    10%{opacity:1;}
+    25%{transform:translate(30px,25vh) rotate(120deg);}
+    50%{transform:translate(-25px,50vh) rotate(240deg);}
+    75%{transform:translate(35px,75vh) rotate(360deg);}
+    100%{transform:translate(-20px,110vh) rotate(540deg);opacity:0;}
+}
 /* ===========================
    COVER
 =========================== */
@@ -206,7 +232,7 @@ button{
     justify-content:center;
     align-items:center;
     height:100vh;
-    background: url("img/latar awal.png") center/cover;
+    background: url("img/latar awal.webp") center/cover;
 }
 
 #cover::before{
@@ -271,11 +297,11 @@ button{
 
 #toast{
     position:fixed;
-    bottom:30px;
+    bottom:50%;
     left:50%;
     transform:translateX(-50%);
     background:#333;
-    color:#fff;
+    color:#E6FFA2; 
     padding:12px 20px;
     border-radius:10px;
     opacity:0;
@@ -288,8 +314,8 @@ button{
 }
 /* ===========================
    MAIN block
-=========================== */
-/*
+=========================== 
+
 #loader,
 #cover{
     display:none;
@@ -382,7 +408,6 @@ button{
 
 #countdown{
     text-align:center;
-    background:var(--text1);
     color: var(--ltr5);
 }
 
@@ -438,7 +463,7 @@ button{
     gap:30px;
     max-width:1000px;
     margin:auto;
-    
+    text-align:center;
 }
 
 .card{
@@ -605,7 +630,7 @@ footer p{
 </head>
 
 <body>
-
+<div class="flowers"></div>
 <!-- ===== Loader ===== -->
 
 <div id="loader">
@@ -645,7 +670,7 @@ footer p{
 
 <section class="hero">
 
-    <h2>
+    <h2 >
         Bisakah Kamu Mempercayainya?
     </h2>
 
@@ -667,7 +692,7 @@ footer p{
         <div>
 
             <img
-                src="img/tgl.png"
+                src="img/tgl.webp"
                 alt="Mempelai Pria">
             </div>
     <div class="counter">
@@ -697,15 +722,15 @@ footer p{
 
 <section id="couple">
 
-    <h2 class="section-title">
+    <h2>
         
     </h2>
 
-    <div class="grid">
+    <div>
         <div>
 
             <img
-                src="img/bocil.png"
+                src="img/bocil.webp"
                 alt="Mempelai Pria">
 <br>
             <h2>Muhammad Rizqon Fadhillah</h2>
@@ -728,12 +753,12 @@ footer p{
 <div class="foto">
 
     <div>
-        <img src="img/rizqon.png" alt="">
+        <img src="img/rizqon.webp" alt="">
         
     </div>
 
     <div>
-        <img src="img/ayu.png" alt="">
+        <img src="img/ayu.webp" alt="">
         
     </div>
 
@@ -750,11 +775,16 @@ footer p{
         <div class="story-card">
 
             <h3>❤ Pertama Bertemu</h3>
-
+<br>
             <p>
-                Tak ada yang kebetulan di dunia ini.
-                Pertemuan kami menjadi awal perjalanan indah
-                yang dipersatukan oleh takdir Allah SWT.
+                Tidak ada yang kebetulan didunia ini, semua 
+                sudah tersusun rapi oleh sang maha kuasa, kita 
+                tidak bisa memilih kepada siapa kita akan jatuh 
+                cinta. kami pertama kali bertemu karena kami 
+                dikenalkan oleh teman kami. awalnya kami berfikir 
+                untuk dijalani saja dulu. tapi tidak disangka 
+                pertemuan itu membawa kami pada suatu ikatan cinta 
+                yang suci ini.
             </p>
 
         </div>
@@ -762,12 +792,13 @@ footer p{
         <div class="story-card">
 
             <h3>❤  Menjalin Komitmen</h3>
-
+<br>
             <p>
-                Hari demi hari kami saling mengenal,
-                bertumbuh bersama,
-                dan saling menguatkan
-                dalam setiap keadaan.
+                Hari demi hari, kami belajar saling mengenal,
+                bukan hanya tentang bahagia, tetapi juga 
+                tentang perbedaan, luka, dan doa, karena cinta 
+                bukan tentang kesempurnaan, melainkan tentang 
+                saling bertahan.
             </p>
 
         </div>
@@ -775,13 +806,12 @@ footer p{
         <div class="story-card">
 
             <h3>❤  Menikah</h3>
-
+<br>
             <p>
-                Dengan memohon ridha Allah SWT,
-                kami memutuskan mengikat janji suci
-                dalam pernikahan.
-                Semoga menjadi keluarga yang
-                sakinah, mawaddah, wa rahmah.
+                Kini, dengan niat yang sama dan doa yang menyertai, 
+                kami memilih untuk menyempurnakan perjalanan ini 
+                dalam ikatan suci pernikahan sebagai awal baru untuk 
+                berbagi hidup, tumbuh, dan menua bersama.
             </p>
 
         </div>
@@ -790,7 +820,7 @@ footer p{
 
 </section>
 
-<section id="event" style="background:var(--text1);">
+<section id="event">
 
     <h2 class="section-title">
         Detail Acara
@@ -859,47 +889,47 @@ footer p{
 
         
         <div class="gallery-item">
-            <img src="img/ajak.png" alt="">
+            <img src="img/ajak.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/chat.png" alt="">
+            <img src="img/chat.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/bonceng.png" alt="">
+            <img src="img/bonceng.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/maam2.png" alt="">
+            <img src="img/maam2.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/ayunan.png" alt="">
+            <img src="img/ayunan.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/maam1.png" alt="">
+            <img src="img/maam1.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/cepatu.png" alt="">
+            <img src="img/cepatu.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/icecream.png" alt="">
+            <img src="img/icecream.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/gendong.png" alt="">
+            <img src="img/gendong.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/otey.png" alt="">
+            <img src="img/otey.webp" alt="">
         </div>
 
         <div class="gallery-item">
-            <img src="img/nikah1.png" alt="">
+            <img src="img/nikah1.webp" alt="">
         </div>
         
 
@@ -942,7 +972,7 @@ footer p{
 
 </section>
 
-<section id="gift" style="background:var(--text1);">
+<section id="gift">
 
     <h2 class="section-title">
         #Gifts
@@ -952,10 +982,10 @@ footer p{
          melalui amplop digital berikut</h3>
     <div class="gift-box">
 
-        <h5>BCA</h5>
-
+        <h5>MANDIRI</h5>
+<br>
         <h5 id="rekening">
-            1234567890
+            179501005475507
         </h5>
 
         <button id="copyRek">
@@ -979,7 +1009,7 @@ footer p{
 </footer>
 
 </div>
-<div id="toast">Terima Kasih</div>
+<div id="toast">Terima Kasih ❤</div>
 <script>
 
 /* ===========================
@@ -1205,6 +1235,25 @@ gallery.addEventListener("scroll", () => {
     }
 
 });
+
+const box=document.querySelector(".flowers");
+const bunga=[
+"img/d1.webp",
+"img/d2.webp",
+"img/d3.webp",
+"img/d4.webp"
+];
+
+for(let i=0;i<35;i++){
+ let f=document.createElement("div");
+ f.className="flower";
+ f.innerHTML=`<img src="${bunga[Math.random()*bunga.length|0]}">`;
+ f.style.left=Math.random()*100+"%";
+ f.style.width=20+Math.random()*30+"px";
+ f.style.animation=`fall ${6+Math.random()*8}s linear infinite`;
+ f.style.animationDelay=-Math.random()*12+"s";
+ box.appendChild(f);
+}
 /* ===========================
    GALLERY AUTO LOOP
 =========================== 
