@@ -1166,6 +1166,7 @@ const rekening = document.getElementById("rekening");
 const copyButton = document.getElementById("copyRek");
 
 copyButton.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(rekening.textContent.trim());
     const toast = document.getElementById("toast");
 
 toast.classList.add("show");
