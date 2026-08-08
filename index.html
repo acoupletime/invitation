@@ -1155,6 +1155,45 @@ form.addEventListener("submit", function(e){
         })
 
     });
+/* TOAST */
+
+const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 1500);
+
+    form.reset();
+
+});
+
+/* ===========================
+   COPY BANK ACCOUNT
+=========================== */
+
+document.querySelectorAll(".copy-btn").forEach(button => {
+
+    button.addEventListener("click", async () => {
+
+        const target = button.previousElementSibling;
+
+        await navigator.clipboard.writeText(
+            target.textContent.trim()
+        );
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 1500);
+        
+        form.reset();
+
+    });
+
+});
 
 /* ===========================
    COUNTDOWN
@@ -1195,46 +1234,6 @@ setInterval(() => {
 
 }, 1000);
 
-/* TOAST */
-
-const toast = document.getElementById("toast");
-
-toast.classList.add("show");
-
-setTimeout(() => {
-    toast.classList.remove("show");
-}, 1500);
-
-    form.reset();
-
-});
-
-
-/* ===========================
-   COPY BANK ACCOUNT
-=========================== */
-
-document.querySelectorAll(".copy-btn").forEach(button => {
-
-    button.addEventListener("click", async () => {
-
-        const target = button.previousElementSibling;
-
-        await navigator.clipboard.writeText(
-            target.textContent.trim()
-        );
-
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 1500);
-
-        form.reset();
-
-    });
-
-});
 /* ===========================
    INFINITE GALLERY
 =========================== */
