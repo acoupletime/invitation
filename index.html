@@ -601,7 +601,7 @@ button.primary{
 =========================== */
 
 footer{
-    background:#222222de;
+    background:#222222e3;
     color:var(--text3);
     text-align:center;
     padding:60px 20px;
@@ -1155,20 +1155,6 @@ form.addEventListener("submit", function(e){
         })
 
     });
-/* TOAST
-
-const toast = document.getElementById("toast");
-
-toast.classList.add("show");
-
-setTimeout(() => {
-    toast.classList.remove("show");
-}, 1500);
-
-    form.reset();
-
-});
-*/
 
 /* ===========================
    COUNTDOWN
@@ -1208,6 +1194,22 @@ setInterval(() => {
     );
 
 }, 1000);
+
+/* TOAST */
+
+const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 1500);
+
+    form.reset();
+
+});
+
+
 /* ===========================
    COPY BANK ACCOUNT
 =========================== */
@@ -1227,6 +1229,8 @@ document.querySelectorAll(".copy-btn").forEach(button => {
         setTimeout(() => {
             toast.classList.remove("show");
         }, 1500);
+
+        form.reset();
 
     });
 
@@ -1262,7 +1266,7 @@ function animate() {
     gallery.scrollLeft += speed;
 
     // Jika melewati set asli ke kanan
-    if (gallery.scrollLeft >= setWidth * 10) {
+    if (gallery.scrollLeft >= setWidth * 2) {
         gallery.scrollLeft -= setWidth;
     }
 
@@ -1307,20 +1311,7 @@ for(let i=0;i<35;i++){
  f.style.animationDelay=-Math.random()*12+"s";
  box.appendChild(f);
 }
-/*
-document.querySelectorAll(".tombol-buka").forEach(button => {
 
-    button.addEventListener("click", () => {
-
-        const targetId = button.dataset.target;
-        const target = document.getElementById(targetId);
-
-        target.classList.toggle("terbuka");
-
-    });
-
-});
-*/
 </script>
 
 </body>
