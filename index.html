@@ -1179,10 +1179,6 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 
         const target = button.previousElementSibling;
 
-        await navigator.clipboard.writeText(
-            target.textContent.trim()
-        );
-
         toast.classList.add("show");
 
         setTimeout(() => {
