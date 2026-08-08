@@ -6,11 +6,11 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Wedding Of Rizqon & Ayu">
-<meta property="og:description" content="Kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami.">
+<meta property="og:description" content="6 September 2026">
 <meta property="og:url" content="https://acoupletime.github.io/invitation/">
 <meta property="og:image" content="https://acoupletime.github.io/invitation/img/cover.webp">
 <meta property="og:site_name" content="The Wedding Of Rizqon & Ayu">
-    
+
 <title>The Wedding Of RIZQON & AYU</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,6 +60,7 @@ body{
     background:var(--text1);
     color:black;
     overflow-x:hidden;
+    overflow-y: auto;
 }
 
 section{
@@ -137,6 +138,7 @@ button{
 .story-card{
     background:#222;
     color: var(--text1);
+    text-align:center;
     padding:30px;
     border-radius:15px;
     margin-bottom:25px;
@@ -150,6 +152,14 @@ button{
     -webkit-tap-highlight-color: transparent;
 }
 
+.invitation-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    overflow: visible;
+}
 /* ===========================
    LOADER
 =========================== */
@@ -239,7 +249,7 @@ button{
     justify-content:center;
     align-items:center;
     height:100vh;
-    background: url("img/latar awal.webp") center/cover;
+    background: url("img/latar.webp") center/cover;
 }
 
 #cover::before{
@@ -285,7 +295,7 @@ button{
 }
 
 #open{
-    margin-top:40px;
+    margin-top:15px;
     padding:15px 45px;
     border:none;
     border-radius:15px;
@@ -551,12 +561,12 @@ textarea{
 
 button.primary{
     width:100%;
-    margin-top:20px;
     padding:15px;
     border:none;
     border-radius:15px;
     background:#E6FFA2;
-    color:white;
+    color:#222;
+    font-family: var(--font3);
     font-size:16px;
 }
 
@@ -566,7 +576,7 @@ button.primary{
 
 .gift-box{
     max-width:500px;
-    margin:40px auto;
+    margin:20px auto;
     padding:40px;
     text-align:center;
     background:#222;
@@ -632,11 +642,27 @@ footer p{
     }
 
 }
+/* ===========================
+   BUKA TUTUP
+=========================== */
 
+.buka-tutup {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+        max-height 0.8s ease,
+        opacity 0.8s ease;
+}
+
+.buka-tutup.terbuka {
+    max-height: 1000px;
+    opacity: 1;
+}
 </style>
 </head>
 
-<body>
+<body  class="invitation-wrapper">
 <div class="flowers"></div>
 <!-- ===== Loader ===== -->
 
@@ -781,7 +807,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤ Pertama Bertemu</h3>
+            <h3>❤ Pertama Bertemu ❤</h3>
 <br>
             <p>
                 Tidak ada yang kebetulan didunia ini, semua 
@@ -798,7 +824,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤  Menjalin Komitmen</h3>
+            <h3>❤ Menjalin Komitmen ❤</h3>
 <br>
             <p>
                 Hari demi hari, kami belajar saling mengenal,
@@ -812,7 +838,7 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤  Menikah</h3>
+            <h3>❤ Menikah ❤</h3>
 <br>
             <p>
                 Kini, dengan niat yang sama dan doa yang menyertai, 
@@ -849,8 +875,12 @@ footer p{
 
             <p style="color: #fff;">16.00 WITA</p>
 
-            <p>BTN Lapesongko 2 <br> Jl. Rejeki Sengkang</p>
+            <p class="copy-target">BTN Lapesongko 2 <br> Jl. Rejeki Sengkang<br><br></p>
 
+            <button class="copy-btn primary" style="font-family: var(--font3);">
+            Salin Alamat
+            </button>
+            
         </div>
 
         <div class="card-box center" style="padding:35px;">
@@ -861,7 +891,11 @@ footer p{
 
             <p style="color: #fff;">10.00 - 17.00 WITA</p>
 
-            <p>Gedung Assa'adah<br>Jl Andi Magga Amirullah</p>
+            <p class="copy-target">Gedung Assa'adah<br>Jl Andi Magga Amirullah<br><br></p>
+
+            <button class="copy-btn primary" style="font-family: var(--font3);">
+            Salin Alamat
+            </button>
 
         </div>
 
@@ -878,10 +912,10 @@ footer p{
     <div style="max-width:1000px;margin:40px auto;">
 
         <iframe
-            src="https://www.google.com/maps?q=Jakarta&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3294.0273556129127!2d120.0308330636277!3d-4.125640334272807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d95e704cd4bdd0f%3A0xe25f11f3563c6c75!2sGEDUNG%20ASSA'ADAH!5e0!3m2!1sid!2sid!4v1786196437599!5m2!1sid!2sid"
             width="100%"
-            height="450"
-            style="border:none;border-radius:15px;"
+            height="auto"
+            style="border:none;border-radius:15px;opacity: 50%;"
             loading="lazy"
             allowfullscreen>
         </iframe>
@@ -972,33 +1006,38 @@ footer p{
         <button
             type="submit"
             class="primary">
-            <h4>Kirim</h4>
+            Kirim
         </button>
 
     </form>
 
 </section>
 
-<section id="gift">
+<section>
 
+    
     <h2 class="section-title">
         #Gifts
     </h2>
     <h3 style="text-align: center;">Kehadiran anda adalah hadiah terindah
          bagi kami. Namun bagi yang berkenan berbagi tanda kasih, dapat
          melalui amplop digital berikut</h3>
+<br>
+         <button class="tombol-buka primary" data-target="gift">
+    Buka Gift</button>
+    <div id="gift" class="buka-tutup">
     <div class="gift-box">
 
         <h5>MANDIRI</h5>
 <br>
-        <h5 id="rekening">
+        <h5 class="copy-target">
             179501005475507
         </h5>
 
-        <button id="copyRek">
+        <button class="copy-btn">
             Salin Rekening
         </button>
-
+</div>
     </div>
 
 </section>
@@ -1044,7 +1083,7 @@ window.onload = () => {
 const music = new Audio("msc/coba.mp3");
 
 music.loop = true;
-music.volume = 1;
+music.volume = 0.5;
 /* ===========================
    OPEN INVITATION
 =========================== */
@@ -1169,23 +1208,25 @@ setInterval(() => {
    COPY BANK ACCOUNT
 =========================== */
 
-const rekening = document.getElementById("rekening");
-const copyButton = document.getElementById("copyRek");
+document.querySelectorAll(".copy-btn").forEach(button => {
 
-copyButton.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(rekening.textContent.trim());
-    const toast = document.getElementById("toast");
+    button.addEventListener("click", async () => {
 
-toast.classList.add("show");
+        const target = button.previousElementSibling;
 
-setTimeout(() => {
-    toast.classList.remove("show");
-}, 1500);
+        await navigator.clipboard.writeText(
+            target.textContent.trim()
+        );
 
-    form.reset();
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 1500);
+
+    });
 
 });
-
 /* ===========================
    INFINITE GALLERY
 =========================== */
@@ -1217,7 +1258,7 @@ function animate() {
     gallery.scrollLeft += speed;
 
     // Jika melewati set asli ke kanan
-    if (gallery.scrollLeft >= setWidth * 2) {
+    if (gallery.scrollLeft >= setWidth * 10) {
         gallery.scrollLeft -= setWidth;
     }
 
@@ -1262,60 +1303,19 @@ for(let i=0;i<35;i++){
  f.style.animationDelay=-Math.random()*12+"s";
  box.appendChild(f);
 }
-/* ===========================
-   GALLERY AUTO LOOP
-=========================== 
 
-const gallery = document.querySelector(".gallery-scroll");
+document.querySelectorAll(".tombol-buka").forEach(button => {
 
-// Gandakan isi gallery
-gallery.innerHTML += gallery.innerHTML;
+    button.addEventListener("click", () => {
 
-const halfWidth = gallery.scrollWidth / 2;
+        const targetId = button.dataset.target;
+        const target = document.getElementById(targetId);
 
-// Mulai dari awal
-gallery.scrollLeft = 0;
+        target.classList.toggle("terbuka");
 
-// Kecepatan auto scroll (0.5 - 2)
-let speed = 0.8;
-
-// Auto scroll
-setInterval(() => {
-    gallery.scrollLeft += speed;
-
-    if (gallery.scrollLeft >= halfWidth) {
-        gallery.scrollLeft -= halfWidth;
-    }
-}, 16);
-
-// Loop saat digeser manual
-gallery.addEventListener("scroll", () => {
-
-    if (gallery.scrollLeft >= halfWidth) {
-        gallery.scrollLeft -= halfWidth;
-    }
-
-    if (gallery.scrollLeft < 0) {
-        gallery.scrollLeft += halfWidth;
-    }
+    });
 
 });
-*/
-/* ===========================
-   RSVP FORM
-=========================== 
-
-const rsvpForm = document.getElementById("rsvpForm");
-
-rsvpForm.onsubmit = (event) => {
-
-    event.preventDefault();
-
-    alert("Terima kasih atas konfirmasi kehadirannya.");
-
-    rsvpForm.reset();
-
-};*/
 
 </script>
 
