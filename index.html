@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Delius&display=swap" rel="stylesheet">
 <style>
 
 :root{
@@ -30,14 +30,14 @@
     --ltr3: 
     --shadow: rgba(0,0,0,.08);
     --font1: "Delius", cursive;
-    --font2: "Delius", cursive;
-    --font3: "Delius", cursive;
-    --font4: "Delius", cursive;
+    --font2: 'Aref Ruqaa', serif;
+    --font1: "Delius", cursive;
+    --font1: "Delius", cursive;
     /*
     --font1: "Cormorant Garamond", serif;
-    --font2: "Poppins", sans-serif;
-    --font3: "Delius", cursive;
-    --font4: "Caveat Brush", cursive;
+    --font1: "Poppins", sans-serif;
+    --font1: "Delius", cursive;
+    --font1: "Caveat Brush", cursive;
     */
 }
 
@@ -56,7 +56,7 @@ html{
 }
 
 body{
-    font-family:var(--font4);
+    font-family:var(--font1);
     background:var(--text1);
     color:black;
     overflow-x:hidden;
@@ -69,19 +69,43 @@ section{
     z-index: 1 ;
 }
 
-h1,h2,h3{
-    font-family:var(--font3);
+h1{
+    font-family:var(--font1);
     color: #E6FFA2;
+    -webkit-text-stroke: 5px pink;
+    paint-order: stroke fill;
+}
+
+h2{
+    font-family:var(--font1);
+    color: #E6FFA2;
+    -webkit-text-stroke: 5px pink;
+    paint-order: stroke fill;
+}
+
+h3{
+    text-align: center;
 }
 
 h4{
-    font-family:var(--font3);   /* text warna */
+    font-family:var(--font1);   /* text warna */
     color: #222;
+    -webkit-text-stroke: 5px pink;
+    paint-order: stroke fill;
 }
 
 h5{
-    font-family:var(--font3);
+    font-family:var(--font1);
     color: #ffffff;
+}
+
+p{
+   -webkit-text-stroke: 5px pink;
+    paint-order: stroke fill; 
+}
+
+p2{
+   font-family: var(--font1);
 }
 
 img{
@@ -126,7 +150,7 @@ button{
     text-align:center;
     font-size:48px;
     color:var(--text3);
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 .card-box{
@@ -160,6 +184,21 @@ button{
     position: relative;
     overflow: visible;
 }
+
+.outline{
+    -webkit-text-stroke: 5px pink;
+    paint-order: stroke fill;
+}
+
+.imgs{
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+    vertical-align: -0.15em;
+    display: inline-block;
+    position: relative;
+}
+
 /* ===========================
    LOADER
 =========================== */
@@ -249,9 +288,10 @@ button{
     justify-content:center;
     align-items:center;
     height:100vh;
+    width: 100%;
     min-height:100vh;
     min-height:100svh;
-    background: url("img/latar.webp") center/cover;
+    background: url("img/latar.webp") center/100% auto no-repeat;
 }
 
 #cover::before{
@@ -303,7 +343,7 @@ button{
     border-radius:15px;
     background:var(--ltr1);
     color:var(--text5);
-    font-family: var(--font4);
+    font-family: var(--font1);
     font-size:18px;
     transition:.3s;
 }
@@ -316,7 +356,7 @@ button{
 
 #toast{
     position:fixed;
-    bottom:50%;
+    bottom:90%;
     left:50%;
     transform:translateX(-50%);
     background:#333;
@@ -354,7 +394,7 @@ button{
     scroll-behavior:auto;
     -webkit-overflow-scrolling:touch;
     cursor:grab;
-    padding:20px 10px;
+    padding:0px 10px;
     scrollbar-width:none;      /* Firefox */
     -ms-overflow-style:none;  
 }
@@ -402,7 +442,7 @@ button{
 }
 
 .hero{
-    padding: 50px;
+    padding: 15px;
     max-width:900px;
     margin:auto;
     text-align:center;
@@ -455,7 +495,7 @@ button{
 }
 
 .box h1{
-    font-family:var(--font3);
+    font-family:var(--font1);
     margin:0;
     font-size:32px;
     color:var(--ltr2);
@@ -568,7 +608,7 @@ button.primary{
     border-radius:15px;
     background:#E6FFA2;
     color:#222;
-    font-family: var(--font3);
+    font-family: var(--font1);
     font-size:16px;
 }
 
@@ -577,12 +617,13 @@ button.primary{
 =========================== */
 
 .gift-box{
-    max-width:500px;
+    max-width:280px;
     margin:20px auto;
     padding:40px;
     text-align:center;
     background:#222;
     border-radius:15px;
+    opacity: 80%;
 }
 
 .gift-box button{
@@ -592,7 +633,7 @@ button.primary{
     border-radius:15px;
     background:#E6FFA2;
     color:black;
-    font-family: var(--font3);
+    font-family: var(--font1);
     font-size:16px;
 }
 
@@ -673,7 +714,12 @@ footer p{
 
 <div id="loader">
     <div class="loaderBox">
-        <h1>The Wedding Of</h1>
+        <h1>
+            <img src="img/d1.webp" class="imgs" alt="">
+            <img src="img/d2.webp" class="imgs" alt="">
+            <img src="img/d3.webp" class="imgs" alt="">
+            <img src="img/d4.webp" class="imgs" alt="">
+        </h1>
         <div class="spinner"></div>
     </div>
 </div>
@@ -684,13 +730,13 @@ footer p{
 
     <div class="coverContent">
 
-        <p>THE WEDDING OF</p>
+        <p style="-webkit-text-stroke: rgba(0, 0, 128, 0);">THE WEDDING OF</p>
 
-        <h1>Rizqon</h1>
+        <h1 style="-webkit-text-stroke: rgba(0, 0, 128, 0);">Rizqon</h1>
         <span style="color: var(--text3);">&</span>
-        <h1 style="color: var(--text1);">Ayu</h1>
+        <h1 style="color: var(--text1);-webkit-text-stroke: rgba(0, 0, 128, 0);">Ayu</h1>
 
-        <h2 style="color: #fffcd9;">Kepada Yth.</h2>
+        <h2 style="color: #fffcd9;-webkit-text-stroke: rgba(0, 0, 128, 0)">Kepada Yth.</h2>
 
         <div id="guest">
             Tamu Undangan
@@ -707,12 +753,12 @@ footer p{
 <div class="invitation-wrapper" id="main">
 
 <section class="hero">
-
-    <h2 >
+<br>
+    <h2 style="font-size: 21px;">
         Bisakah Kamu Mempercayainya?
     </h2>
 
-    <p>
+    <p style="font-size: 15px;" class="outline">
         Rasanya baru kemarin kita masih anak-anak, 
         dan kini kita akan menikah. Dengan penuh sukacita, 
         kami mengundang Anda untuk turut merayakan hari yang 
@@ -723,7 +769,7 @@ footer p{
 
 <section id="countdown">
 
-    <h2 style="transform: translateY(10px);" class="section-title">
+    <h2 class="section-title">
         Save The Date
     </h2>
 
@@ -739,17 +785,17 @@ footer p{
             <h1 id="day">00</h1>
             <p>Hari</p>
         </div>
-<div>-</div>
+<div class="outline">-</div>
         <div>
             <h1 id="hour">00</h1>
             <p>Jam</p>
         </div>
-<div>-</div>
+<div class="outline">-</div>
         <div>
             <h1 id="minute">00</h1>
             <p>Menit</p>
         </div>
-<div>-</div>
+<div class="outline">-</div>
         <div>
             <h1 id="second">00</h1>
             <p>Detik</p>
@@ -812,9 +858,9 @@ footer p{
 
         <div class="story-card">
 
-            <h3>❤ Pertama Bertemu ❤</h3>
+            <h3 style="color: #E6FFA2;">❤ Pertama Bertemu ❤</h3>
 <br>
-            <p>
+            <p2>
                 Tidak ada yang kebetulan didunia ini, semua 
                 sudah tersusun rapi oleh sang maha kuasa, kita 
                 tidak bisa memilih kepada siapa kita akan jatuh 
@@ -823,34 +869,34 @@ footer p{
                 untuk menjalaninya saja dulu, tapi tidak disangka 
                 pertemuan itu membawa kami pada suatu ikatan cinta 
                 yang suci ini.
-            </p>
+            </p2>
 
         </div>
 
         <div class="story-card">
 
-            <h3>❤ Menjalin Komitmen ❤</h3>
+            <h3 style="color: #E6FFA2;">❤ Menjalin Komitmen ❤</h3>
 <br>
-            <p>
+            <p2>
                 Hari demi hari, kami belajar saling mengenal,
                 bukan hanya tentang bahagia, tetapi juga 
                 tentang perbedaan, luka, dan doa, karena cinta 
                 bukan tentang kesempurnaan, melainkan tentang 
                 saling bertahan.
-            </p>
+            </p2>
 
         </div>
 
         <div class="story-card">
 
-            <h3>❤ Menikah ❤</h3>
+            <h3 style="color: #E6FFA2;">❤ Menikah ❤</h3>
 <br>
-            <p>
+            <p2>
                 Kini, dengan niat yang sama dan doa yang menyertai, 
                 kami memilih untuk menyempurnakan perjalanan ini 
                 dalam ikatan suci pernikahan sebagai awal baru untuk 
                 berbagi hidup, tumbuh, dan menua bersama.
-            </p>
+            </p2>
 
         </div>
 
@@ -882,7 +928,7 @@ footer p{
 
             <p class="copy-target">BTN Lapesongko 2 <br> Jl. Rejeki Sengkang<br><br></p>
 
-            <button class="copy-btn primary" style="font-family: var(--font3);">
+            <button class="copy-btn primary" style="font-family: var(--font1);">
             Salin Alamat
             </button>
             
@@ -898,7 +944,7 @@ footer p{
 
             <p class="copy-target">Gedung Assa'adah<br>Jl Andi Magga Amirullah<br><br></p>
 
-            <button class="copy-btn primary" style="font-family: var(--font3);">
+            <button class="copy-btn primary" style="font-family: var(--font1);">
             Salin Alamat
             </button>
 
@@ -983,6 +1029,18 @@ footer p{
 
 </section>
 
+<section class="hero">
+
+    <h2 style="font-family: var(--font2); font-size: 26px;">
+        وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ
+    </h2>
+
+    <p style="font-size: 15px;" class="outline">
+        “Dan segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah).” (QS. Az-Zariyat: 49)
+    </p>
+
+</section>
+
 <section id="rsvp">
 
     <h2 class="section-title">
@@ -1024,9 +1082,9 @@ footer p{
     <h2 class="section-title">
         #Gifts
     </h2>
-    <h3 style="text-align: center;">Kehadiran anda adalah hadiah terindah
+    <h2 style="text-align: center;">Kehadiran anda adalah hadiah terindah
          bagi kami. Namun bagi yang berkenan berbagi tanda kasih, dapat
-         melalui amplop digital berikut</h3>
+         melalui amplop digital berikut</h2>
 <br>
 
     <div class="gift-box">
@@ -1047,13 +1105,13 @@ footer p{
 
 <footer>
 
-    <h2>Terima Kasih</h2>
-
-    <p>
+    <h3>Terima Kasih</h3>
+<br>
+    <p2>
         Merupakan suatu kehormatan bagi kami apabila
         Bapak/Ibu/Saudara/i berkenan hadir
         dan memberikan doa restu.
-    </p>
+    </p2>
 
 </footer>
 
