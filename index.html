@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Delius&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Italianno&display=Delius&display=swap" rel="stylesheet">
 <style>
 
 :root{
@@ -31,7 +31,7 @@
     --shadow: rgba(0,0,0,.08);
     --font1: "Delius", cursive;
     --font2: 'Aref Ruqaa', serif;
-    --font1: "Delius", cursive;
+    --font3: "Italianno", cursive;
     --font1: "Delius", cursive;
     /*
     --font1: "Cormorant Garamond", serif;
@@ -331,13 +331,16 @@ button{
 
 #guest{
     margin-top:10px;
-    font-size:35px;
-    color:#d0ffff;
-    -webkit-text-stroke: 0.1px #a6c5ff;
+    font-size:60px;
+    color:#f8fbfc;
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.8),
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 20px rgba(255,255,255,0.4);
 }
 
 #open{
-    margin-top:15px;
+    margin-top:30px;
     padding:15px 45px;
     border:none;
     border-radius:15px;
@@ -738,8 +741,8 @@ footer p{
 
         <h2 style="color: #fffcd9;-webkit-text-stroke: rgba(0, 0, 128, 0)">Kepada Yth.</h2>
 
-        <div id="guest">
-            Tamu Undangan
+        <div style="font-family: var(--font3);" id="guest">
+            Serumpun Brothers
         </div>
 
         <button id="open">
