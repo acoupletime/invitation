@@ -371,7 +371,7 @@ button{
 }
 
 #toast.show{
-    opacity:1;
+    opacity:0.5;
 }
 /* ===========================
    MAIN block
@@ -1572,13 +1572,33 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 
         const target = button.previousElementSibling;
 
-        toast.classList.add("show");
+        if (!target) return;
 
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 1500);
-        
-        form.reset();
+        const text = target.innerText.trim();
+
+        try {
+
+            await navigator.clipboard.writeText(text);
+
+            toast.textContent = "Berhasil disalin ❤";
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 1500);
+
+        } catch (error) {
+
+            console.log("Gagal menyalin:", error);
+
+            toast.textContent = "Gagal menyalin";
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 1500);
+
+        }
 
     });
 
