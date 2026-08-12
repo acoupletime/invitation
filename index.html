@@ -371,7 +371,7 @@ button{
 }
 
 #toast.show{
-    opacity:0.5;
+    opacity:0.8;
 }
 /* ===========================
    MAIN block
@@ -1580,7 +1580,7 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 
             await navigator.clipboard.writeText(text);
 
-            toast.textContent = "Berhasil disalin ❤";
+            toast.textContent = "Terimakasih ❤";
             toast.classList.add("show");
 
             setTimeout(() => {
@@ -1589,9 +1589,9 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 
         } catch (error) {
 
-            console.log("Gagal menyalin:", error);
+            console.log("Gagal:", error);
 
-            toast.textContent = "Gagal menyalin";
+            toast.textContent = "Gagal";
             toast.classList.add("show");
 
             setTimeout(() => {
