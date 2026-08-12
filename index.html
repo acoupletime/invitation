@@ -707,13 +707,272 @@ footer p{
     opacity: 1;
 }
 */
+
+/*Live Chat*/
+
+.chat-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+#chatList {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+}
+
+.chat-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f5f5f557;
+    border-radius: 15px;
+}
+
+.chat-item strong {
+    color: #E6FFA2;
+    -webkit-text-stroke: 1px #222;
+    paint-order: stroke fill;
+    display: inline;
+}
+
+.chat-item small {
+    display: inline;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+.chat-item p {
+    color: white;
+    flex-basis: 100%;
+    margin: 5px 0 0;
+}
+
+.chat-box input,
+.chat-box textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.chat-box textarea {
+    height: 80px;
+    resize: none;
+}
+
+.chat-box button {
+    font-family: var(--font1);
+    background-color: #E6FFA2;
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 15px;
+}
+.chat-text-fade {
+    color: transparent !important;
+    transition: color .4s ease;
+}
+/* ==============================
+   FLOATING MUSIC CONTROL
+   ============================== */
+
+.music-control {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease,
+        transform .7s ease;
+
+    pointer-events: none;
+}
+
+.music-control.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+/* ==============================
+   TOMBOL MUSIC
+   ============================== */
+
+.music-button {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-image: url("img/d3.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+
+    box-shadow: none;
+    border-radius: 0;
+    /*
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.30),
+        0 0 0 2px rgba(255,255,255,.20) inset;
+
+    transition:
+        filter .6s ease,
+        box-shadow .6s ease;
+    */
+}
+
+
+/* ==============================
+   MUSIC ON
+   ============================== */
+
+.music-button.music-on {
+    filter: grayscale(0);
+
+    box-shadow: none;
+    /*
+    box-shadow:
+        0 4px 18px rgba(0,0,0,.25),
+        0 0 15px rgba(221,180,75,.45),
+        0 0 0 2px rgba(255,255,255,.4) inset;
+    */
+}
+
+
+/* ==============================
+   MUSIC OFF
+   ============================== */
+
+.music-button.music-off {
+    filter: grayscale(1);
+    box-shadow: none;
+}
+
+
+/* ==============================
+   LABEL
+   ============================== */
+
+.music-label {
+    margin-top: 4px;
+
+    width: 100%;
+    text-align: center;
+
+    font-family: var(--font1);
+    font-size: 11px;
+    line-height: 1;
+
+    letter-spacing: 1px;
+    color: white;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 3px rgba(0,0,0,.7);
+
+    transition:
+        color .5s ease,
+        opacity .5s ease;
+}
+
+.music-control.music-active .music-label {
+    color: #E6FFA2;
+}
+
+
+/* ==============================
+   TEKAN
+   ============================== */
+
+.music-button:active {
+    scale: .90;
+}
+
+
+/* ==============================
+   HP
+   ============================== */
+
+@media (max-width:600px) {
+
+
+
+    .music-button {
+        width: 48px;
+        height: 48px;
+    }
+
+    .music-label {
+        font-size: 10px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 <div class="flowers"></div>
 <!-- ===== Loader ===== -->
+<!-- TOMBOL MUSIC -->
+<!-- MUSIC PLAYER -->
+<div class="music-control" id="musicControl">
 
+    <div class="music-button" id="musicButton"></div>
+
+    <div class="music-label" id="musicLabel">
+        OFF
+    </div>
+
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="msc/coba.mp3" type="audio/mpeg">
+</audio>
 <div id="loader">
     <div class="loaderBox">
         <h1>
@@ -1044,38 +1303,40 @@ footer p{
 
 </section>
 
-<section id="rsvp">
+<section class="chat-box">
 
-    <h2 class="section-title" style="transform: translate(0px, -10px);">
-        RSVP
-    </h2>
+    <h2>Ucapan & Doa</h2>
 
-    <form id="rsvpForm">
+    <div id="chatList">
+        Memuat ucapan...
+    </div>
 
-        <input id="nama"
-            type="text"
-            placeholder="Nama"
-            required
-            oninvalid="this.setCustomValidity('Silakan isi nama Anda.')"
-    oninput="this.setCustomValidity('')">
+    <input
+        type="text"
+        id="chatName"
+        placeholder="Nama"
+        required
+        oninvalid="this.setCustomValidity('Silakan isi nama Anda.')"
+        oninput="this.setCustomValidity('')"
+    >
+    <select id="chatStatus">
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
 
-        <select id="hadir">
+    <textarea
+        id="chatMessage"
+        placeholder="Tulis ucapan..."
+        required
+        oninvalid="this.setCustomValidity('Silakan isi terlebih dahulu.')"
+        oninput="this.setCustomValidity('')"
+    ></textarea>
 
-            <option>Hadir</option>
-            <option>Tidak Hadir</option>
-
-        </select>
-
-        <textarea id="ucapan"
-            placeholder="Ucapan dan Doa"></textarea>
-
-        <button
-            type="submit"
-            class="primary">
-            Kirim
-        </button>
-
-    </form>
+    <button 
+        onclick="sendChat();
+        this.classList.add('copy-btn')">
+        Kirim
+    </button>
 
 </section>
 
@@ -1141,14 +1402,6 @@ window.onload = () => {
 };
 
 /* ===========================
-   BACKGROUND MUSIC
-=========================== */
-
-const music = new Audio("msc/coba.mp3");
-
-music.loop = true;
-music.volume = 0.5;
-/* ===========================
    OPEN INVITATION
 =========================== */
 
@@ -1168,89 +1421,49 @@ openButton.onclick = () => {
             main.classList.add("fade-in");
         });
 
-        music.play();
+        /* TAMPILKAN TOMBOL */
+        musicControl.classList.add("show");
+
+        /* LANGSUNG NYALAKAN MUSIK */
+        musicPlaying = true;
+
+        musicButton.classList.remove("music-off");
+        musicButton.classList.add("music-on");
+
+        musicControl.classList.add("music-active");
+
+        musicLabel.textContent = "ON";
+
+        /* MULAI ROTASI PERLAHAN */
+        targetSpeed = 45;
+
+        /* FADE IN MUSIK */
+        fadeInMusic();
 
     }, 800);
 
 };
 
-/* ===========================
-   GUEST NAME
-=========================== */
+/*Bunga*/
 
-/* ===========================
-   GUEST NAME
-=========================== */
+const box=document.querySelector(".flowers");
+const bunga=[
+"img/d1.webp",
+"img/d2.webp",
+"img/d3.webp",
+"img/d4.webp"
+];
 
-const guest = document.getElementById("guest");
-
-const params = new URLSearchParams(window.location.search);
-const namaTamu = params.get("to");
-
-if (namaTamu) {
-    guest.textContent = decodeURIComponent(namaTamu.replace(/\+/g, " "));
+for(let i=0;i<35;i++){
+ let f=document.createElement("div");
+ f.className="flower";
+ f.innerHTML=`<img src="${bunga[Math.random()*bunga.length|0]}">`;
+ f.style.left=Math.random()*100+"%";
+ f.style.width=20+Math.random()*30+"px";
+ f.style.animation=`fall ${6+Math.random()*8}s linear infinite`;
+ f.style.animationDelay=-Math.random()*12+"s";
+ box.appendChild(f);
 }
-
-const form = document.getElementById("rsvpForm");
-
-form.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const nama = document.getElementById("nama").value;
-    const hadir = document.getElementById("hadir").value;
-    const ucapan = document.getElementById("ucapan").value;
-
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd3Lfth_nzwMfgSULjhMjVUX4fm265Scg9-j9QEF8mOQUlk1Q/formResponse",{
-
-        method:"POST",
-
-        mode:"no-cors",
-
-        body:new URLSearchParams({
-
-            "entry.643412851": nama,
-            "entry.1645384770": hadir,
-            "entry.1896488482": ucapan
-
-        })
-
-    });
-/* TOAST */
-
-const toast = document.getElementById("toast");
-
-toast.classList.add("show");
-
-setTimeout(() => {
-    toast.classList.remove("show");
-}, 1500);
-
-    form.reset();
-
-});
-
-/* ===========================
-   COPY BANK ACCOUNT
-=========================== */
-
-document.querySelectorAll(".copy-btn").forEach(button => {
-
-    button.addEventListener("click", async () => {
-
-        const target = button.previousElementSibling;
-
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 1500);
-        
-        form.reset();
-
-    });
-
-});
 
 /* ===========================
    COUNTDOWN
@@ -1349,24 +1562,522 @@ gallery.addEventListener("scroll", () => {
 
 });
 
-const box=document.querySelector(".flowers");
-const bunga=[
-"img/d1.webp",
-"img/d2.webp",
-"img/d3.webp",
-"img/d4.webp"
-];
+/* ===========================
+   COPY BANK ACCOUNT
+=========================== */
 
-for(let i=0;i<35;i++){
- let f=document.createElement("div");
- f.className="flower";
- f.innerHTML=`<img src="${bunga[Math.random()*bunga.length|0]}">`;
- f.style.left=Math.random()*100+"%";
- f.style.width=20+Math.random()*30+"px";
- f.style.animation=`fall ${6+Math.random()*8}s linear infinite`;
- f.style.animationDelay=-Math.random()*12+"s";
- box.appendChild(f);
+document.querySelectorAll(".copy-btn").forEach(button => {
+
+    button.addEventListener("click", async () => {
+
+        const target = button.previousElementSibling;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 1500);
+        
+        form.reset();
+
+    });
+
+});
+/* ===========================
+   GUEST NAME
+=========================== */
+
+const API_URL = "https://script.google.com/macros/s/AKfycbwVwfqTPAcxhB_zmOTm_AtF0G09WO9eKCpdZD9JUfCt9UW9TGy7MrBO3VklXx5rX32y/exec";
+
+let lastMessageId = null;
+
+
+// =============================
+// MENGAMBIL CHAT
+// =============================
+
+async function loadChat() {
+
+    try {
+
+        const response = await fetch(API_URL);
+
+        const messages = await response.json();
+
+        if (messages.length === 0) {
+
+            document.getElementById("chatList").innerHTML =
+                "<p>Belum ada ucapan.</p>";
+
+            return;
+        }
+
+
+        // pesan terakhir
+        const newestMessage =
+            messages[messages.length - 1];
+
+
+        // kalau tidak ada pesan baru
+        if (newestMessage.id === lastMessageId) {
+            return;
+        }
+
+
+        lastMessageId = newestMessage.id;
+
+
+        // tampilkan chat
+        const chatList =
+            document.getElementById("chatList");
+
+        chatList.innerHTML = "";
+
+
+        messages.forEach(message => {
+
+            const item =
+                document.createElement("div");
+
+            item.className = "chat-item";
+
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent = message.nama;
+
+            const status =
+            document.createElement("small"); 
+
+            status.textContent = "("+ message.status + ")"
+
+            const text =
+                document.createElement("p");
+
+            text.textContent = message.pesan;
+
+
+            item.appendChild(name);
+
+            item.appendChild(status);
+
+            item.appendChild(text);
+
+            chatList.appendChild(item);
+
+        });
+
+
+        // scroll ke pesan terbaru
+        chatList.scrollTop = 0;
+
+
+    } catch (error) {
+
+        console.log("Gagal mengambil chat:", error);
+
+    }
+
 }
+
+
+// =============================
+// KIRIM CHAT
+// =============================
+
+async function sendChat() {
+
+    const nameInput = document.getElementById("chatName");
+    const messageInput = document.getElementById("chatMessage");
+    const statusInput = document.getElementById("chatStatus");
+
+    if (!nameInput.checkValidity()) {
+        nameInput.reportValidity();
+        return;
+    }
+
+    if (!messageInput.checkValidity()) {
+        messageInput.reportValidity();
+        return;
+    }
+
+    const name = nameInput.value.trim();
+    const message = messageInput.value.trim();
+    const status = statusInput.value;
+
+    // LANGSUNG KOSONGKAN INPUT
+    nameInput.classList.add("chat-text-fade");
+messageInput.classList.add("chat-text-fade");
+
+setTimeout(() => {
+    nameInput.value = "";
+    messageInput.value = "";
+    statusInput.value = "Hadir";
+
+    nameInput.classList.remove("chat-text-fade");
+}, 400);
+    // TAMPILKAN TOAST
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1500);
+
+    // KIRIM KE SERVER
+    try {
+
+        await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                nama: name,
+                pesan: message,
+                status: status
+            })
+        });
+
+        // Setelah berhasil, ambil data terbaru
+        loadChat();
+
+    } catch (error) {
+
+        console.log("Gagal mengirim:", error);
+
+    }
+}
+
+
+// =============================
+// LOAD PERTAMA
+// =============================
+
+loadChat();
+
+let holdChat = false;
+
+const chatList = document.getElementById("chatList");
+
+// Saat disentuh / ditekan
+chatList.addEventListener("touchstart", () => {
+    holdChat = true;
+});
+
+// Saat dilepas
+chatList.addEventListener("touchend", () => {
+    holdChat = false;
+});
+
+// Untuk mouse desktop
+chatList.addEventListener("mousedown", () => {
+    holdChat = true;
+});
+
+chatList.addEventListener("mouseup", () => {
+    holdChat = false;
+});
+
+chatList.addEventListener("mouseleave", () => {
+    holdChat = false;
+});
+
+function autoScrollChat() {
+
+    if (holdChat) return;
+
+    const chatList = document.getElementById("chatList");
+
+    if (chatList.scrollHeight <= chatList.clientHeight) {
+        return;
+    }
+
+    chatList.scrollTop += 1;
+
+    if (
+        chatList.scrollTop + chatList.clientHeight >=
+        chatList.scrollHeight
+    ) {
+        chatList.scrollTop = 0;
+    }
+}
+
+setInterval(autoScrollChat, 50);
+
+// =============================
+// CEK PERUBAHAN
+// =============================
+
+setInterval(loadChat, 1000);
+
+/* ===========================
+   GUEST NAME
+===========================
+
+const guest = document.getElementById("guest");
+
+const params = new URLSearchParams(window.location.search);
+const namaTamu = params.get("to");
+
+if (namaTamu) {
+    guest.textContent = decodeURIComponent(namaTamu.replace(/\+/g, " "));
+}
+
+const form = document.getElementById("rsvpForm");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const nama = document.getElementById("nama").value;
+    const hadir = document.getElementById("hadir").value;
+    const ucapan = document.getElementById("ucapan").value;
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd3Lfth_nzwMfgSULjhMjVUX4fm265Scg9-j9QEF8mOQUlk1Q/formResponse",{
+
+        method:"POST",
+
+        mode:"no-cors",
+
+        body:new URLSearchParams({
+
+            "entry.643412851": nama,
+            "entry.1645384770": hadir,
+            "entry.1896488482": ucapan
+
+        })
+
+    });
+ */
+/* TOAST */
+
+/* ==============================
+   MUSIC CONTROL
+   ============================== */
+
+const musicControl = document.getElementById("musicControl");
+const musicButton = document.getElementById("musicButton");
+const bgMusic = document.getElementById("bgMusic");
+const musicLabel = document.getElementById("musicLabel");
+
+let musicPlaying = false;
+let fadeTimer = null;
+
+
+/* ==============================
+   KONDISI AWAL
+   ============================== */
+
+bgMusic.volume = 0;
+
+musicButton.classList.add("music-off");
+musicLabel.textContent = "OFF";
+
+
+/* ==============================
+   ROTASI PIRINGAN
+   ============================== */
+
+let rotation = 0;
+let rotationSpeed = 0;
+let targetSpeed = 0;
+
+let lastTime = performance.now();
+
+function rotateMusic(time) {
+
+    const delta = (time - lastTime) / 1000;
+    lastTime = time;
+
+    const acceleration = 30;
+
+    if (rotationSpeed < targetSpeed) {
+        rotationSpeed += acceleration * delta;
+
+        if (rotationSpeed > targetSpeed) {
+            rotationSpeed = targetSpeed;
+        }
+    }
+
+    if (rotationSpeed > targetSpeed) {
+        rotationSpeed -= acceleration * delta;
+
+        if (rotationSpeed < targetSpeed) {
+            rotationSpeed = targetSpeed;
+        }
+    }
+
+    rotation += rotationSpeed * delta;
+
+    musicButton.style.transform =
+        `rotate(${rotation}deg)`;
+
+    requestAnimationFrame(rotateMusic);
+}
+
+requestAnimationFrame(rotateMusic);
+
+
+/* ==============================
+   FADE IN
+   ============================== */
+
+function fadeInMusic() {
+
+    clearInterval(fadeTimer);
+
+    bgMusic.play().catch(error => {
+        console.log("Musik tidak dapat diputar:", error);
+    });
+
+
+    let volume = bgMusic.volume;
+
+
+    fadeTimer = setInterval(() => {
+
+        volume += 0.02;
+
+
+        if (volume >= 0.5) {
+
+            volume = 0.5;
+
+            clearInterval(fadeTimer);
+
+        }
+
+
+        bgMusic.volume = volume;
+
+    }, 50);
+}
+
+
+/* ==============================
+   FADE OUT
+   ============================== */
+
+function fadeOutMusic() {
+
+    clearInterval(fadeTimer);
+
+    let volume = bgMusic.volume;
+
+
+    fadeTimer = setInterval(() => {
+
+        volume -= 0.02;
+
+
+        if (volume <= 0) {
+
+            volume = 0;
+
+            clearInterval(fadeTimer);
+
+            bgMusic.pause();
+
+        }
+
+
+        bgMusic.volume = volume;
+
+    }, 50);
+}
+
+
+/* ==============================
+   TOMBOL MUSIC
+   ============================== */
+
+musicButton.addEventListener("click", () => {
+
+
+    /* ==========================
+       MUSIC ON
+       ========================== */
+
+    if (!musicPlaying) {
+
+        musicPlaying = true;
+
+
+        musicButton.classList.remove("music-off");
+
+        musicButton.classList.add("music-on");
+
+
+        musicControl.classList.add("music-active");
+
+
+        musicLabel.textContent = "ON";
+
+
+        /*
+           Rotasi perlahan mulai
+        */
+
+        targetSpeed = 45;
+
+
+        /*
+           Musik fade in
+        */
+
+        fadeInMusic();
+
+
+        return;
+    }
+
+
+    /* ==========================
+       MUSIC OFF
+       ========================== */
+
+    musicPlaying = false;
+
+
+    musicButton.classList.remove("music-on");
+
+    musicButton.classList.add("music-off");
+
+
+    musicControl.classList.remove("music-active");
+
+
+    musicLabel.textContent = "OFF";
+
+
+    /*
+       Rotasi perlahan berhenti
+       pada posisi terakhir
+    */
+
+    targetSpeed = 0;
+
+
+    /*
+       Musik fade out
+    */
+
+    fadeOutMusic();
+
+});
+
+
+/* ==============================
+   KONDISI AWAL
+   ============================== */
+
+musicButton.classList.add("music-off");
+
+
+
+
+
+
+
+
 
 </script>
 
