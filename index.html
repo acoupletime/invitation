@@ -1727,7 +1727,7 @@ async function sendChat() {
     const status = statusInput.value;
 
     // LANGSUNG KOSONGKAN INPUT
-    nameInput.classList.add("chat-text-fade");
+nameInput.classList.add("chat-text-fade");
 messageInput.classList.add("chat-text-fade");
 
 setTimeout(() => {
@@ -1736,6 +1736,7 @@ setTimeout(() => {
     statusInput.value = "Hadir";
 
     nameInput.classList.remove("chat-text-fade");
+    messageInput.classList.remove("chat-text-fade");
 }, 400);
     // TAMPILKAN TOAST
     toast.classList.add("show");
