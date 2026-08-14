@@ -6,7 +6,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Wedding Of Rizqon & Ayu">
-<meta property="og:description" content="6 September 2026">
+<meta property="og:description" content="Minggu, 6 September 2026">
 <meta property="og:url" content="https://acoupletime.github.io/invitation/">
 <meta property="og:image" content="https://acoupletime.github.io/invitation/img/cover.webp">
 <meta property="og:site_name" content="The Wedding Of Rizqon & Ayu">
@@ -1831,7 +1831,7 @@ setInterval(loadChat, 1000);
 
 /* ===========================
    GUEST NAME
-===========================
+===========================*/
 
 const guest = document.getElementById("guest");
 
@@ -1842,32 +1842,7 @@ if (namaTamu) {
     guest.textContent = decodeURIComponent(namaTamu.replace(/\+/g, " "));
 }
 
-const form = document.getElementById("rsvpForm");
-
-form.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const nama = document.getElementById("nama").value;
-    const hadir = document.getElementById("hadir").value;
-    const ucapan = document.getElementById("ucapan").value;
-
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd3Lfth_nzwMfgSULjhMjVUX4fm265Scg9-j9QEF8mOQUlk1Q/formResponse",{
-
-        method:"POST",
-
-        mode:"no-cors",
-
-        body:new URLSearchParams({
-
-            "entry.643412851": nama,
-            "entry.1645384770": hadir,
-            "entry.1896488482": ucapan
-
-        })
-
-    });
- */
+ 
 /* TOAST */
 
 /* ==============================
